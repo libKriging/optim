@@ -81,10 +81,18 @@
     #define OPTIM_FPN_TYPE double
 #endif
 
-#if OPTIM_FPN_TYPE == float
+#define JOIN(A,B) JOIN_(A,B)
+#define JOIN_(A,B) A##B
+
+#define OPTIM_FPN_TYPEVALUE JOIN(OPTIM_FPN_TYPE,_TYPEVALUE)
+
+#define float_TYPEVALUE 1
+#define double_TYPEVALUE 2
+
+#if OPTIM_FPN_TYPEVALUE == float_TYPEVALUE
     #undef OPTIM_FPN_SMALL_NUMBER
     #define OPTIM_FPN_SMALL_NUMBER fp_t(1e-05)
-#elif OPTIM_FPN_TYPE == double
+#elif OPTIM_FPN_TYPEVALUE == double_TYPEVALUE
     #undef OPTIM_FPN_SMALL_NUMBER
     #define OPTIM_FPN_SMALL_NUMBER fp_t(1e-08)
 #else
