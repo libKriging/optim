@@ -41,9 +41,9 @@
 
 //
 
-#ifdef _MSC_VER
-    #error OptimLib: MSVC is not supported
-#endif
+//#ifdef _MSC_VER
+//    #error OptimLib: MSVC is not supported
+//#endif
 
 //
 
