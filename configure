@@ -76,7 +76,9 @@ if [[ "${OPTIM_GEN_NEW_HEADERS}" == "y" ]]; then
     rm -rf ./header_only_version
     mkdir ./header_only_version
 
-    cp -rf ./include/* ./header_only_version/
+    BASEDIR=$( cd "$(dirname "$0")" ; pwd -P ) # since BSD readlink is not available on macOS
+
+    cp -rf ${BASEDIR}/include/* ./header_only_version/
 
     #
 
@@ -112,7 +114,7 @@ if [[ "${OPTIM_GEN_NEW_HEADERS}" == "y" ]]; then
                 sed -i -e "s|#endif|//\n|" $file_.hpp
             fi
 
-            sed -e '1,/\[OPTIM_BEGIN\]/ d' $WDIR/src/"$dir_"/"$file_".cpp | sed -e "s|optimlib_inline|inline|" -e "s|optim::||" >> "$file_".hpp
+            sed -e '1,/\[OPTIM_BEGIN\]/ d' ${BASEDIR}/src/"$dir_"/"$file_".cpp | sed -e "s|optimlib_inline|inline|" -e "s|optim::||" >> "$file_".hpp
 
             echo -e "\n#endif" >> "$file_".hpp
         done
