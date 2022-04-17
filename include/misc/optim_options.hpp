@@ -144,7 +144,7 @@ namespace optim
         using RowVec_t = arma::Row<fp_t>;
         using ColVecInt_t = arma::Col<int>;
         using RowVecInt_t = arma::Row<int>;
-        using ColVecUInt_t = arma::Col<unsigned long long>;
+        using ColVecUInt_t = arma::Col<arma::uword>;
     }
 #elif defined(OPTIM_ENABLE_EIGEN_WRAPPERS) || defined(OPTIM_USE_RCPP_EIGEN)
     #ifndef OPTIM_ENABLE_EIGEN_WRAPPERS
